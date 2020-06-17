@@ -2,4 +2,4 @@ build:
     docker:
         web: ./my_app_name/Dockerfile.heroku
 run:
-    web: serve -s build
+    web: serve -s build -l 20438
