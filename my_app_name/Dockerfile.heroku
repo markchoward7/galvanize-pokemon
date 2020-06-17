@@ -9,8 +9,6 @@ RUN apk update \
     bash \
     musl-dev
 
-COPY ./package.json /usr/src/app/package.json
+RUN npm install serve
 
-RUN npm install --no-optional && npm cache clean --force
-
-COPY . /usr/src/app/
+COPY ./build /usr/src/app/build
