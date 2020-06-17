@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+    app:
+        container_name: js_app
+        build: ./my_app_name
+        command: npm start
+        volumes:
+            - ./my_app_name:/usr/src/app
+            - modules:/usr/src/app/node_modules
+        ports:
+            - 80:3000
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        stdin_open: true
+        tty: true
+
+volumes:
+    modules:
