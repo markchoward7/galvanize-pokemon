@@ -1,0 +1,5 @@
+build:
+    docker:
+        web: ./my_app_name/Dockerfile.heroku
+run:
+    web: npm start
