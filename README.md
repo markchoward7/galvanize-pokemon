@@ -6,6 +6,8 @@ Tends to load improperly if actions are taken to load a new set of pokemon prior
 
 Also, the next/previous buttons continue to try to process data outside of range.
 
+Finally, previous doesn't properly get the last set of pokemon when searching by name.
+
 Use `docker-compose build` to build the image.
 
 Then `docker-compose up` to run it.
