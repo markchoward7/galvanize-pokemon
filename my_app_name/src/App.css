@@ -103,7 +103,7 @@ button:active {
   font-size: calc(8px + 1vmin);
 }
 
-.side-bar input[type=text] {
+.side-bar input[type=search] {
   width: 80px;
 }
 

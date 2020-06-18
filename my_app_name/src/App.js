@@ -114,7 +114,7 @@ class App extends React.Component {
             <option>---</option>
             {types.map(type => <option>{CapitalizeFirst(type)}</option>)}
           </select>
-          <input type="text" placeholder="name..." onChange={this.handleTextChange.bind(this)}/>
+          <input type="search" className="search-field" placeholder="name..." onChange={this.handleTextChange.bind(this)}/>
           <button onClick={this.handleCollectionSearch.bind(this)}>View Collection</button>
           <br /><Battle parent={this} />
         </div>
