@@ -73,11 +73,17 @@ class App extends React.Component {
   }
 
   handleNext() {
-    this.fetchTwenty(this.state.current_end_index)
+    if (this.state.current_end_index < this.state.pokemon_links_all.length) {
+      if (!types.includes(this.state.current_search) || this.state.current_end_index < this.state.pokemon_links_by_type[this.state.current_search].length) {
+        this.fetchTwenty(this.state.current_end_index)
+      }
+    }
   }
 
   handlePrevious() {
-    this.fetchTwenty(this.state.current_end_index-40)
+    if (this.state.current_end_index > 20) {
+      this.fetchTwenty(this.state.current_end_index-40)
+    }
   }
 
   async handleCollectionSearch() {
