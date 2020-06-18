@@ -29,11 +29,20 @@ class Pokemon extends React.Component {
         }
     }
 
+    async handleSearchType(event) {
+        let select = document.getElementById("type-select")
+        select.value = event.target.innerText
+        await this.state.grandparent.setState({
+            current_search: event.target.innerText.toLowerCase()
+        })
+        this.state.grandparent.fetchTwenty(0)
+    }
+
     render() {
         return (
             <div className="poke-card grid-container-3">
                 <h4>{CapitalizeFirst(this.state.pokemon.name)}</h4>
-                <h5>{this.state.pokemon.types.length === 1 ? CapitalizeFirst(this.state.pokemon.types[0].type.name) : `${CapitalizeFirst(this.state.pokemon.types[0].type.name)} - ${CapitalizeFirst(this.state.pokemon.types[1].type.name)}` }</h5>
+                {this.state.pokemon.types.length === 1 ? <div><h5 className="type-name" onClick={this.handleSearchType.bind(this)}>{CapitalizeFirst(this.state.pokemon.types[0].type.name)}</h5></div> : <div><h5 className="type-name" onClick={this.handleSearchType.bind(this)}>{CapitalizeFirst(this.state.pokemon.types[0].type.name)}</h5> <span>-</span> <h5 className="type-name" onClick={this.handleSearchType.bind(this)}>{CapitalizeFirst(this.state.pokemon.types[1].type.name)}</h5></div> }
                 {this.state.grandparent.state.looking_for_battle ? <button className="battle-button" onClick={this.handleBattle.bind(this)}>Battle</button> : ""}
                 <div className="row-2-3">
                     <img src={this.state.pokemon.sprites.front_default} />

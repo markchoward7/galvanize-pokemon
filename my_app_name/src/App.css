@@ -56,12 +56,20 @@ button:active {
 }
 
 .poke-card {
-    border: 1px solid black;
-    border-radius: 25px;
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
-    text-align: left;
-    margin: 1em;
-    padding: 1em;
+  border: 1px solid black;
+  border-radius: 25px;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
+  text-align: left;
+  margin: 1em;
+  padding: 1em;
+}
+
+.type-name {
+  display: inline-block;
+}
+
+.type-name:hover {
+  cursor: pointer;
 }
 
 .poke-card img {

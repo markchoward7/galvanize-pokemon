@@ -110,7 +110,7 @@ class App extends React.Component {
       <div className="App">
         <div className="side-bar">
           Search
-          <select onChange={this.handleSelectChange.bind(this)}>
+          <select id="type-select" onChange={this.handleSelectChange.bind(this)}>
             <option>---</option>
             {types.map(type => <option>{CapitalizeFirst(type)}</option>)}
           </select>
