@@ -1,9 +1,29 @@
+@font-face {
+  font-family: pokemon-header;
+  src: url("PokemonSolid.ttf");
+}
+
+@font-face {
+  font-family: pixel-font;
+  src: url("pixellocale-v-1-3.ttf")
+}
+
+.title {
+  font-family: pokemon-header;
+  color: yellow;
+  font-size: calc(12px + 3vmin);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: blue;
+}
+
 button {
+  font-family: pokemon-header;
   border: none;
   border-radius: 10px;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
   background-color: #61dafb;
   outline: none;
+  margin: 0px
 }
 
 button:hover {
@@ -15,24 +35,25 @@ button:active {
 }
 
 .App {
-    text-align: center;
-    background-color: #282c34;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  font-family: pixel-font;
+  text-align: center;
+  background-color: #282c34;
+  font-size: calc(4px + 2vmin);
+  color: white;
 }
 
 .App-link {
-    color: #61dafb;
+  color: #61dafb;
 }
 
 .grid-container-3 {
-    display: grid;
-    grid-template-columns: auto auto auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
 
 .grid-container-2 {
-    display: grid;
-    grid-template-columns: auto auto;
+  display: grid;
+  grid-template-columns: auto auto;
 }
 
 .column-2-3 {
@@ -116,6 +137,7 @@ button:active {
 }
 
 .side-bar button {
+  font-size: 10px;
   height: 30px;
   width: 90px;
 }

@@ -118,8 +118,8 @@ class App extends React.Component {
           <button onClick={this.handleCollectionSearch.bind(this)}>View Collection</button>
           <br /><Battle parent={this} />
         </div>
+        <div className="title">Pokemon</div>   
         <div className="main">
-          Pokemon   
           <PokemonList listOfPokemon={this.state.current_pokemon} parent={this}/>
         </div>
         <div className="bottom-bar">
