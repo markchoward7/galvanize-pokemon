@@ -19,7 +19,8 @@ class App extends React.Component {
     collection: [],
     looking_for_battle: false,
     battle_pokemon: [],
-    current_detailed_pokemon: null
+    current_detailed_pokemon: null,
+    items_to_fetch: []
   }
 
   async componentDidMount() {
@@ -42,17 +43,16 @@ class App extends React.Component {
   }
 
   async fetchTwenty(index) {
-    await this.setState({current_pokemon: []})
-    let itemsToFetch = []
+    await this.setState({current_pokemon: [], itemsToFetch: []})
     if (this.state.current_search === "all") {
-      itemsToFetch = this.state.pokemon_links_all.slice(index, index+20)
+      await this.setState({itemsToFetch: this.state.pokemon_links_all.slice(index, index+20)})
     } else if (types.includes(this.state.current_search)) {
-      itemsToFetch = this.state.pokemon_links_by_type[this.state.current_search].slice(index, index+20)
+      await this.setState({itemsToFetch: this.state.pokemon_links_by_type[this.state.current_search].slice(index, index+20)})
     } else if (this.state.current_search === "collection") {
-      itemsToFetch = this.state.collection.slice(index, index+20)
-      this.setState({current_pokemon: itemsToFetch})
+      await this.setState({current_pokemon: this.state.collection.slice(index, index+20)})
       return
     } else {
+      let itemsToFetch = []
       for (var i = 0; i < this.state.pokemon_links_all.slice(index).length; i++) {
         if (this.state.pokemon_links_all.slice(index)[i].name.includes(this.state.current_search)) {
           itemsToFetch.push(this.state.pokemon_links_all.slice(index)[i])
@@ -62,8 +62,9 @@ class App extends React.Component {
           }
         }
       }
+      await this.setState({itemsToFetch: itemsToFetch})
     }
-    for (const item of itemsToFetch) {
+    for (const item of this.state.itemsToFetch) {
       let response = ""
       if (item.url) {
         response = await fetch(item.url)
@@ -71,7 +72,13 @@ class App extends React.Component {
         response = await fetch(item.pokemon.url)
       }
       const json = await response.json()
-      this.setState({current_pokemon: [...this.state.current_pokemon, json], current_end_index: index+20})
+      for (const item of this.state.itemsToFetch) {
+        if ((item.pokemon && item.pokemon.name === json.name) || item.name === json.name ) {
+          this.setState({current_pokemon: [...this.state.current_pokemon, json], current_end_index: index+20})
+          break
+        }
+      }
+      
     }
   }
 
