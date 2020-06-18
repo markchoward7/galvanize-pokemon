@@ -36,23 +36,23 @@ button:active {
 }
 
 .column-2-3 {
-  grid-column: 2 / 3;
+  grid-column: 2 / 4;
 }
 
-.row-2-4 {
+.row-2-3 {
   grid-row: 2 / 4;
 }
 
-.row-5 {
-  grid-row: 5;
+.row-4 {
+  grid-row: 4;
 }
 
 .column-2 {
   grid-column: 2;
 }
 
-.align-right {
-  text-align: right;
+.column-3 {
+  grid-column: 3;
 }
 
 .poke-card {
@@ -74,6 +74,19 @@ button:active {
   width: 200px;
 }
 
+.battle-button {
+  margin: 2em 2em 0 0;
+  background-color: rgb(179, 26, 26);
+}
+
+.battle-button:hover {
+  background-color: rgb(224, 46, 46);
+}
+
+.battle-button:active {
+  background-color: rgb(146, 6, 6);
+}
+
 .main {
   padding: 0 0 50px 100px;
 }
@@ -84,6 +97,10 @@ button:active {
   height: 100%;
   left: 0px;
   background-color: #333c4e;
+}
+
+.side-bar p {
+  font-size: calc(8px + 1vmin);
 }
 
 .side-bar input[type=text] {

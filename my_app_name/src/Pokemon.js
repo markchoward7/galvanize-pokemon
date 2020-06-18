@@ -1,5 +1,7 @@
 import React from 'react'
 
+import CapitalizeFirst from './CapitalizeFirst'
+
 class Pokemon extends React.Component {
     constructor(props) {
         super(props)
@@ -19,15 +21,24 @@ class Pokemon extends React.Component {
         }
     }
 
+    handleBattle() {
+        if (this.state.grandparent.state.battle_pokemon.length >= 2) {
+            return
+        } else {
+            this.state.grandparent.setState({battle_pokemon: [...this.state.grandparent.state.battle_pokemon, this.state.pokemon]})
+        }
+    }
+
     render() {
         return (
             <div className="poke-card grid-container-3">
                 <h4>{CapitalizeFirst(this.state.pokemon.name)}</h4>
                 <h5>{this.state.pokemon.types.length === 1 ? CapitalizeFirst(this.state.pokemon.types[0].type.name) : `${CapitalizeFirst(this.state.pokemon.types[0].type.name)} - ${CapitalizeFirst(this.state.pokemon.types[1].type.name)}` }</h5>
-                <div className="row-2-4">
+                {this.state.grandparent.state.looking_for_battle ? <button className="battle-button" onClick={this.handleBattle.bind(this)}>Battle</button> : ""}
+                <div className="row-2-3">
                     <img src={this.state.pokemon.sprites.front_default} />
                 </div>
-                <div className="row-2-4 column-2-3 grid-container-2">
+                <div className="row-2-3 column-2-3 grid-container-2">
                     <p>{this.state.pokemon.stats[0].base_stat} - HP</p>
                     <p>{this.state.pokemon.stats[1].base_stat} - Attack</p>
                     <p>{this.state.pokemon.stats[2].base_stat} - Defense</p>
@@ -35,19 +46,15 @@ class Pokemon extends React.Component {
                     <p>{this.state.pokemon.stats[4].base_stat} - Special Defense</p>
                     <p>{this.state.pokemon.stats[5].base_stat} - Speed</p>
                 </div>
-                <div className="row-5 column-2 align-right">
+                <div className="row-4 column-3 align-right">
                     <h5>Pokedex Number: {this.state.pokemon.id}</h5>
                 </div>
-                <div className="row-5">
+                <div className="row-4">
                 <br /><button onClick={this.handleCollection.bind(this)}>{this.state.grandparent.state.collection.includes(this.state.pokemon) ? "Remove from collection" : "Add to collection"}</button>
                 </div>
             </div>
         )
     }
-}
-
-function CapitalizeFirst(string) {
-    return string[0].toUpperCase() + string.slice(1)
 }
 
 export default Pokemon

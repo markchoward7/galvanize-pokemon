@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 
 import PokemonList from './PokemonList'
+import Battle from './Battle';
+import CapitalizeFirst from './CapitalizeFirst'
 
 const types = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "ice", "dragon", "dark", "fairy"]
 class App extends React.Component {
@@ -12,7 +14,9 @@ class App extends React.Component {
     pokemon_links_by_type: {},
     current_search: "all",
     current_end_index: 0,
-    collection: []
+    collection: [],
+    looking_for_battle: false,
+    battle_pokemon: []
   }
 
   async componentDidMount() {
@@ -112,6 +116,7 @@ class App extends React.Component {
           </select>
           <input type="text" placeholder="name..." onChange={this.handleTextChange.bind(this)}/>
           <button onClick={this.handleCollectionSearch.bind(this)}>View Collection</button>
+          <br /><Battle parent={this} />
         </div>
         <div className="main">
           Pokemon   
@@ -124,10 +129,6 @@ class App extends React.Component {
       </div>
     );
   }
-}
-
-function CapitalizeFirst(string) {
-  return string[0].toUpperCase() + string.slice(1)
 }
 
 export default App;
