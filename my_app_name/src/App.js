@@ -121,6 +121,11 @@ class App extends React.Component {
     this.fetchTwenty(0)
   }
 
+  async handleTitleClick() {
+    await this.setState({current_search: "all", current_detailed_pokemon: null})
+    this.fetchTwenty(0)
+  }
+
   render() {
     return (
       <div className="App">
@@ -134,7 +139,7 @@ class App extends React.Component {
           <button onClick={this.handleCollectionSearch.bind(this)}>View Collection</button>
           <br /><Battle parent={this} />
         </div>
-        <div className="title">Pokemon</div>   
+        <div className="title" onClick={this.handleTitleClick.bind(this)}>Pokemon</div>   
         <div className="main">
           {this.state.current_detailed_pokemon ? <PokeDetails pokemon={this.state.current_detailed_pokemon} parent={this} /> : <PokemonList listOfPokemon={this.state.current_pokemon} parent={this}/>}
         </div>

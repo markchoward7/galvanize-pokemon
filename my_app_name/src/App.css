@@ -32,6 +32,10 @@ option {
   -webkit-text-stroke-color: blue;
 }
 
+.title:hover {
+  cursor: pointer;
+}
+
 button {
   font-family: pokemon-header;
   border: none;
