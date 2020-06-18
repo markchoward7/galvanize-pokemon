@@ -2,9 +2,9 @@ Dockerized pokemon react appolication. Can be run normally without docker with n
 
 Also can be found on heroku at https://galvanize-pokemon-react.herokuapp.com/
 
-Tends to load improperly if actions are taken to load a new set of pokemon prior to the old one being completely loaded.
+Previous doesn't properly get the last set of pokemon when searching by name.
 
-Also, previous doesn't properly get the last set of pokemon when searching by name.
+Also, previous and next can go out of bounds when looking at collection.
 
 Use `docker-compose build` to build the image.
 
