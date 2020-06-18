@@ -89,6 +89,10 @@ button:active {
   grid-row: 2 / 4;
 }
 
+.row-2 {
+  grid-row: 2;
+}
+
 .row-4 {
   grid-row: 4;
 }

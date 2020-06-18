@@ -129,7 +129,7 @@ class App extends React.Component {
         </div>
         <div className="title">Pokemon</div>   
         <div className="main">
-          {this.state.current_detailed_pokemon ? <PokeDetails pokemon={this.state.current_detailed_pokemon} /> : <PokemonList listOfPokemon={this.state.current_pokemon} parent={this}/>}
+          {this.state.current_detailed_pokemon ? <PokeDetails pokemon={this.state.current_detailed_pokemon} parent={this} /> : <PokemonList listOfPokemon={this.state.current_pokemon} parent={this}/>}
         </div>
         <div className="bottom-bar">
           <button onClick={this.handlePrevious.bind(this)}>Previous</button>
