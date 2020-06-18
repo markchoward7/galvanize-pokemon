@@ -4,9 +4,7 @@ Also can be found on heroku at https://galvanize-pokemon-react.herokuapp.com/
 
 Tends to load improperly if actions are taken to load a new set of pokemon prior to the old one being completely loaded.
 
-Also, the next/previous buttons continue to try to process data outside of range.
-
-Finally, previous doesn't properly get the last set of pokemon when searching by name.
+Also, previous doesn't properly get the last set of pokemon when searching by name.
 
 Use `docker-compose build` to build the image.
 
