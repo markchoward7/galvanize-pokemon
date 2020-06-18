@@ -96,6 +96,10 @@ class Pokemon extends React.Component {
         }
     }
 
+    handleGetDetails() {
+        this.state.grandparent.setState({current_detailed_pokemon: this.state.pokemon})
+    }
+
     async handleSearchType(event) {
         let select = document.getElementById("type-select")
         select.value = event.target.innerText
@@ -108,11 +112,11 @@ class Pokemon extends React.Component {
     render() {
         return (
             <div className="poke-card grid-container-3">
-                <h4>{CapitalizeFirst(this.state.pokemon.name)}</h4>
+                <h4 className="poke-name" onClick={this.handleGetDetails.bind(this)}>{CapitalizeFirst(this.state.pokemon.name)}</h4>
                 {this.state.pokemon.types.length === 1 ? <div><h5 className="type-name" onClick={this.handleSearchType.bind(this)}>{CapitalizeFirst(this.state.pokemon.types[0].type.name)}</h5></div> : <div><h5 className="type-name" onClick={this.handleSearchType.bind(this)}>{CapitalizeFirst(this.state.pokemon.types[0].type.name)}</h5> <span>-</span> <h5 className="type-name" onClick={this.handleSearchType.bind(this)}>{CapitalizeFirst(this.state.pokemon.types[1].type.name)}</h5></div> }
                 {this.state.grandparent.state.looking_for_battle && this.state.grandparent.state.battle_pokemon.length < 2 ? <button className="battle-button" onClick={this.handleBattle.bind(this)}>Battle</button> : ""}
                 <div className="row-2-3">
-                    <img src={this.state.pokemon.sprites.front_default} />
+                    <img onClick={this.handleGetDetails.bind(this)} src={this.state.pokemon.sprites.front_default} />
                 </div>
                 <div className="row-2-3 column-2-3 grid-container-2">
                     <p>{this.state.pokemon.stats[0].base_stat} - HP</p>

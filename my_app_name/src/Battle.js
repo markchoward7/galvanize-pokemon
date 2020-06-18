@@ -32,7 +32,7 @@ class Battle extends React.Component {
                 <br />
                 {this.state.parent.state.battle_pokemon[0] ? <div><button onClick={this.handleClearBattle.bind(this)}>Clear Battle</button><p id="first-poke">{CapitalizeFirst(this.state.parent.state.battle_pokemon[0].name)}</p></div> : ""}
                 <br />
-                {this.state.parent.state.battle_pokemon[1] ? <div><p>vs</p><br /><p id="second-poke">{CapitalizeFirst(this.state.parent.state.battle_pokemon[1].name)}</p><br /><button onClick={this.handleFight.bind(this)}>Determine Winner</button></div> : ""}
+                {this.state.parent.state.battle_pokemon[1] ? <div><p>vs</p><br /><p id="second-poke">{CapitalizeFirst(this.state.parent.state.battle_pokemon[1].name)}</p><br /><button onClick={this.handleFight.bind(this)}>Fight</button></div> : ""}
             </div>
         )
     }

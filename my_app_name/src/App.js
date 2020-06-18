@@ -3,6 +3,8 @@ import './App.css';
 
 import PokemonList from './PokemonList'
 import Battle from './Battle';
+import PokeDetails from './PokeDetails'
+
 import CapitalizeFirst from './CapitalizeFirst'
 
 const types = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "ice", "dragon", "dark", "fairy"]
@@ -16,7 +18,8 @@ class App extends React.Component {
     current_end_index: 0,
     collection: [],
     looking_for_battle: false,
-    battle_pokemon: []
+    battle_pokemon: [],
+    current_detailed_pokemon: null
   }
 
   async componentDidMount() {
@@ -87,7 +90,7 @@ class App extends React.Component {
   }
 
   async handleCollectionSearch() {
-    await this.setState({current_search: "collection"})
+    await this.setState({current_search: "collection", current_detailed_pokemon: null})
     this.fetchTwenty(0)
   }
 
@@ -95,18 +98,18 @@ class App extends React.Component {
     event.preventDefault()
     let value = event.target.value
     if (value !== "---") {
-      await this.setState({current_search: value.toLowerCase()})
+      await this.setState({current_search: value.toLowerCase(), current_detailed_pokemon: null})
     } else {
-      await this.setState({current_search: "all"})
+      await this.setState({current_search: "all", current_detailed_pokemon: null})
     }
     this.fetchTwenty(0)
   }
 
   async handleTextChange(event) {
     if (event.target.value === "") {
-      await this.setState({current_search: "all"})
+      await this.setState({current_search: "all", current_detailed_pokemon: null})
     } else {
-      await this.setState({current_search: event.target.value.toLowerCase()})
+      await this.setState({current_search: event.target.value.toLowerCase(), current_detailed_pokemon: null})
     }
     this.fetchTwenty(0)
   }
@@ -126,7 +129,7 @@ class App extends React.Component {
         </div>
         <div className="title">Pokemon</div>   
         <div className="main">
-          <PokemonList listOfPokemon={this.state.current_pokemon} parent={this}/>
+          {this.state.current_detailed_pokemon ? <PokeDetails pokemon={this.state.current_detailed_pokemon} /> : <PokemonList listOfPokemon={this.state.current_pokemon} parent={this}/>}
         </div>
         <div className="bottom-bar">
           <button onClick={this.handlePrevious.bind(this)}>Previous</button>
